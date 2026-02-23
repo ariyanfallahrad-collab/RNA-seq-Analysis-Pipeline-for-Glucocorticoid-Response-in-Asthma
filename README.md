@@ -229,20 +229,24 @@ Salmon quantification
 
 ### Results
 
-The pipeline generated gene-level expression profiles and identified differential expression patterns between experimental conditions.
-Both upregulated and downregulated genes were observed. Volcano plots and heatmaps revealed distinct expression patterns and sample clustering consistent with treatment effects.
-Functional enrichment analysis identified pathways related to immune signaling and inflammatory processes associated with asthma biology.
-Due to the limited sample size, statistical power was reduced and enrichment p-values were generally higher than in the reference study. However, directional expression trends and biologically relevant pathway associations remained consistent with known disease mechanisms.
 
-### Limitations
+Differential expression analysis identified significant transcriptional changes associated with glucocorticoid exposure. The volcano plot revealed a clear separation of upregulated and downregulated genes, with a subset of genes showing strong statistical significance and large effect sizes. Several transcripts exhibited substantial downregulation, indicating robust treatment-associated suppression of gene expression.
 
--Reduced sample size limits statistical power
+Hierarchical clustering of differentially expressed genes was visualized using a heatmap of selected significant genes. The heatmap demonstrated distinct expression patterns between experimental conditions, with clear sample clustering consistent with treatment status. This separation supports the presence of coordinated transcriptional responses to glucocorticoid exposure.
 
--Workflow differs from reference implementation
+Functional enrichment analysis was performed using g:Profiler on the top downregulated genes. Gene Ontology analysis revealed significant enrichment in molecular functions related to protease regulation and enzymatic activity, including peptidase regulator activity, peptidase inhibitor activity, and hydrolase activity. Cellular component enrichment indicated strong overrepresentation of extracellular space and extracellular region terms. These findings suggest that glucocorticoid exposure is associated with reduced expression of genes involved in extracellular signaling, proteolytic regulation, and tissue remodeling processes.
 
--Resource-constrained computational environment
+In contrast, enrichment analysis of upregulated genes did not reveal statistically significant or biologically coherent functional categories. Consequently, downstream functional interpretation focused on the downregulated gene set.
 
--Enrichment results should be interpreted cautiously
+Overall, the results indicate that glucocorticoid treatment induces coordinated suppression of extracellular and protease-related pathways, consistent with known anti-inflammatory and tissue regulatory effects of glucocorticoids.
+
+### Discussion — Statistical Power and Sample Size Limitations
+
+The statistical significance of the observed differential expression and enrichment results should be interpreted with caution due to the limited number of samples analyzed in this study. Small sample sizes reduce statistical power, which increases variability in gene expression estimates and decreases the precision of p-value calculations. As a result, true biological effects may fail to reach statistical significance (increased false negatives), while estimated effect sizes and associated p-values may be less stable and more sensitive to individual sample variation.
+
+This limitation also affects downstream functional enrichment analyses, where reduced gene list size and statistical power can influence the robustness of pathway detection and significance estimates. Consequently, although the observed transcriptional patterns and enriched functional categories are biologically plausible and consistent with known glucocorticoid responses, the statistical strength of these findings is inherently constrained by sample size.
+
+Future studies with larger cohorts will be necessary to improve statistical power, refine effect size estimates, and confirm the reproducibility of the observed transcriptional and functional changes.
 
 ### Conclusion
 
