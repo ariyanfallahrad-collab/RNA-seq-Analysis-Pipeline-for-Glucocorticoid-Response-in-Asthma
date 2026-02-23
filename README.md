@@ -132,4 +132,3 @@ This project demonstrates that key transcriptional response patterns associated 
 The pipeline provides a reproducible and modular framework for RNA-seq analysis under practical computational constraints and serves as an educational implementation of transcriptomic data processing, differential expression analysis, and functional interpretation.
  
 
-<img width="451" height="701" alt="image" src="https://github.com/user-attachments/assets/6648e248-d182-4777-9538-25b8eb5ff41f" />
