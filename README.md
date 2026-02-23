@@ -1,112 +1,170 @@
 RNA-seq Analysis Pipeline for Glucocorticoid Response in Asthma
- 
 Overview
-Asthma is a chronic inflammatory airway disease in which glucocorticoids are widely used as controller medications, yet some patients particularly those with severe or refractory disease—show limited therapeutic response. The reference study investigated transcriptomic responses to glucocorticoid exposure in airway smooth muscle (ASM) cells derived from donors with fatal asthma and donors without asthma, identifying extensive differential gene expression and a distinct glucocorticoid-response signature enriched in immune-related pathways.
-This project implements an independently designed RNA-seq analysis pipeline to reproduce a selected subset of those computational results. Using a limited sample set and a fully custom workflow, the data were reprocessed and key analytical outputs associated with glucocorticoid-induced transcriptional changes were regenerated.
-The pipeline is modular, reproducible, and designed to run under constrained computational resources using a controlled Conda environment and stepwise processing strategy.
-Main outputs
-•	Gene-level count matrix
-•	Differential expression results
-•	Volcano plot
-•	Heatmap of selected genes
-•	Functional enrichment analysis
 
+Asthma is a chronic inflammatory airway disease in which glucocorticoids are widely used as controller medications. However, some patients — particularly those with severe or refractory disease — show limited therapeutic response.
 
- 
-Quick start
+The reference study investigated transcriptomic responses to glucocorticoid exposure in airway smooth muscle (ASM) cells derived from donors with fatal asthma and from non-asthmatic donors. The study identified extensive differential gene expression and a distinct glucocorticoid-response signature enriched in immune-related pathways.
+
+This project implements an independently designed RNA-seq analysis pipeline to reproduce a selected subset of those computational findings. Using a limited sample set and a fully custom workflow, raw data were reprocessed and key analytical outputs associated with glucocorticoid-induced transcriptional changes were regenerated.
+
+The pipeline is modular, reproducible, and designed to operate under constrained computational resources using a controlled Conda environment and stepwise processing.
+
+Main Outputs
+
+Gene-level count matrix
+
+Differential expression results
+
+Volcano plot
+
+Heatmap of selected genes
+
+Functional enrichment analysis
+
+Quick Start
 conda env create -f environment.yml
 conda activate myenv
 
 bash scripts/salmon_fastp_pipeline.sh
 python scripts/analysis.py
- 
-Repository structure
-scripts/                 Python analysis RNA-seq preprocessing and 
-                         quantification pipeline scripts
-environment.yml          Conda environment specification
-references/              Gene annotation and 
-                         gene mapping files 
-results/                 Generated outputs and figures
-notebooks/               python analysis in jupyter notebook
- 
-Data sources
-Reference study
+Repository Structure
+scripts/         RNA-seq preprocessing, quantification, and analysis scripts
+environment.yml  Conda environment specification
+references/      Gene annotation and gene mapping files
+results/         Generated outputs and figures
+notebooks/       Jupyter notebooks for exploratory analysis
+Data Sources
+Reference Study
+
 https://pubmed.ncbi.nlm.nih.gov/30694689/
-RNA-seq dataset
+
+RNA-seq Dataset
+
 GEO accession: GSE94335
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE94335
-Samples analyzed
-•	SRR5219989
-•	SRR5219985
-•	SRR5220016
-•	SRR5219984
- 
-System requirements
-•	macOS (10+)
-•	8 GB RAM
-•	256 GB storage
-•	Terminal command line
-•	Conda (Anaconda or Miniconda)
-Windows users
+
+Samples Analyzed
+
+SRR5219989
+
+SRR5219985
+
+SRR5220016
+
+SRR5219984
+
+System Requirements
+
+macOS (10+) or Linux
+
+8 GB RAM minimum
+
+256 GB storage recommended
+
+Terminal command line
+
+Conda (Anaconda or Miniconda)
+
+Windows Users
+
 Install Windows Subsystem for Linux (WSL):
 https://learn.microsoft.com/windows/wsl/install
+
 Installing Conda
+
 Install Anaconda or Miniconda for your operating system:
-•	macOS: https://docs.conda.io/en/latest/miniconda.html
-•	Windows: https://docs.conda.io/en/latest/miniconda.html
-After installation, open a terminal (macOS / Linux) or Anaconda Prompt (Windows).
- 
-Environment setup
-Place environment.yml in your working directory and run in your command line:
+
+macOS / Linux: https://docs.conda.io/en/latest/miniconda.html
+
+Windows: https://docs.conda.io/en/latest/miniconda.html
+
+After installation, open a terminal (macOS/Linux) or Anaconda Prompt (Windows).
+
+Environment Setup
+
+Place environment.yml in your working directory and run:
+
 conda env create -f environment.yml
 conda activate myenv
-All commands must be executed inside the activated environment.
- 
-Gene annotation file
-A Homo sapiens gene annotation file is required and provided in the repository(refrences).
+
+All pipeline commands must be executed inside the activated environment.
+
+Gene Annotation File
+
+A Homo sapiens gene annotation file is required and provided in the references/ directory.
 Ensure it is present in the working directory before running the pipeline.
- 
-RNA-seq preprocessing and quantification
+
+RNA-seq Preprocessing and Quantification
+
 Run:
+
 bash scripts/salmon_fastp_pipeline.sh
+
 This step:
-•	downloads SRA data
-•	converts reads to FASTQ
-•	performs trimming and QC (fastp)
-•	generates QC reports
-•	performs Salmon pseudoalignment and quantification
-Outputs include:
-•	raw SRA files
-•	trimmed FASTQ files
-•	QC reports
-•	Salmon quant.sf files
- 
-Generate gene symbol identifier mapping
-After quantification, construct:
-•	Allgene_ids.csv (version-cleaned identifiers)
-•	gtf.mapping.csv (mapping file)
-These are used for transcript-to-gene aggregation.
- 
-Count matrix construction
-The gene-level count matrix is generated by aggregating Salmon transcript-level quantification.
-Two annotation resources are required:
-1.	Standardized gene identifiers
-Ensembl identifiers may contain version suffixes (e.g., .1, .2).
-These are removed using sed to produce a consistent identifier list (ALLgene_ids.csv).
-2.	Transcript-to-gene mapping file
-Extracted from quant.sf outputs (gtf.mapping.csv) to link transcripts with gene symbols.
+
+Downloads SRA data
+
+Converts reads to FASTQ
+
+Performs trimming and quality control (fastp)
+
+Generates QC reports
+
+Performs Salmon pseudoalignment and quantification
+
+Outputs
+
+Raw SRA files
+
+Trimmed FASTQ files
+
+QC reports
+
+Salmon quant.sf files
+
+Gene Identifier and Mapping Generation
+
+After quantification, the following files are constructed:
+
+ALLgene_ids.csv — version-cleaned gene identifiers
+
+gtf.mapping.csv — transcript-to-gene mapping file
+
+These files enable transcript-to-gene aggregation.
+
+Count Matrix Construction
+
+Gene-level counts are generated by aggregating Salmon transcript-level quantification.
+
+Required Annotation Resources
+
+1. Standardized gene identifiers
+Ensembl gene identifiers may include version suffixes (e.g., .1, .2).
+These are removed using sed to create consistent identifiers (ALLgene_ids.csv).
+
+2. Transcript-to-gene mapping file
+Extracted from quant.sf outputs (gtf.mapping.csv) to link transcripts to gene symbols.
+
 Using these resources, transcript abundances are aggregated into a gene-level count matrix (genes × samples).
- 
-Downstream analysis
+
+Downstream Analysis
+
 Run:
+
 python scripts/analysis.py
+
 This step performs:
-•	count matrix processing
-•	metadata integration
-•	PyDESeq2 differential expression analysis
-•	visualization generation
- 
-Computational workflow (Python stage)
+
+Count matrix processing
+
+Metadata integration
+
+Differential expression analysis using PyDESeq2
+
+Visualization generation
+
+Computational Workflow (Python Stage)
+
 Salmon quantification
 → transcript-to-gene aggregation
 → gene count matrix
@@ -114,21 +172,29 @@ Salmon quantification
 → PyDESeq2 object
 → differential expression results
 → visualization (volcano plot, heatmap)
- 
-Results
-The pipeline successfully generated gene-level expression profiles and identified differential expression patterns between experimental conditions.
-Both upregulated and downregulated genes were observed. Volcano plots and heatmaps revealed distinct expression patterns and sample clustering consistent with treatment effects.
-Functional enrichment analysis identified pathways related to immune signaling and inflammatory processes associated with asthma biology.
-Due to the limited sample size, statistical power was reduced and enrichment p-values were generally higher than in the reference study. However, directional expression trends and biologically relevant pathway associations remained consistent with known disease mechanisms.
- 
-Limitations
-•	Reduced sample size limits statistical power
-•	Workflow differs from reference implementation
-•	Resource-constrained computational environment
-•	Enrichment results should be interpreted cautiously
- 
-Conclusion
-This project demonstrates that key transcriptional response patterns associated with glucocorticoid exposure in asthma can be reproduced using an independent RNA-seq analysis pipeline. Despite reduced statistical power and methodological differences, biologically meaningful gene expression trends and pathway enrichment were observed.
-The pipeline provides a reproducible and modular framework for RNA-seq analysis under practical computational constraints and serves as an educational implementation of transcriptomic data processing, differential expression analysis, and functional interpretation.
- 
 
+Results
+
+The pipeline generated gene-level expression profiles and identified differential expression patterns between experimental conditions.
+
+Both upregulated and downregulated genes were observed. Volcano plots and heatmaps revealed distinct expression patterns and sample clustering consistent with treatment effects.
+
+Functional enrichment analysis identified pathways related to immune signaling and inflammatory processes associated with asthma biology.
+
+Due to the limited sample size, statistical power was reduced and enrichment p-values were generally higher than in the reference study. However, directional expression trends and biologically relevant pathway associations remained consistent with known disease mechanisms.
+
+Limitations
+
+Reduced sample size limits statistical power
+
+Workflow differs from reference implementation
+
+Resource-constrained computational environment
+
+Enrichment results should be interpreted cautiously
+
+Conclusion
+
+This project demonstrates that key transcriptional response patterns associated with glucocorticoid exposure in asthma can be reproduced using an independent RNA-seq analysis pipeline. Despite reduced statistical power and methodological differences, biologically meaningful gene expression trends and pathway enrichment were observed.
+
+The pipeline provides a reproducible and modular framework for RNA-seq analysis under practical computational constraints and serves as an educational implementation of transcriptomic data processing, differential expression analysis, and functional interpretation.
