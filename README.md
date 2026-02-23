@@ -33,6 +33,10 @@ The pipeline is modular, reproducible, and designed to operate under constrained
 
 bash:
 
+git clone https://github.com/ariyanfallahrad-collab/RNA-seq-Analysis-Pipeline-for-Glucocorticoid-Response-in-Asthma.git
+
+cd RNA-seq-Analysis-Pipeline-for-Glucocorticoid-Response-in-Asthma
+
 conda env create -f environment.yml
 
 conda activate myenv
@@ -111,9 +115,22 @@ conda activate myenv
 
 All pipeline commands must be executed inside the activated environment.
 
-Gene Annotation File
+## Reference Transcriptome (GENCODE)
 
-A Homo sapiens gene annotation file is required and provided in the references/ directory.
+Human transcript nucleotide sequences were obtained from the GENCODE database.
+
+To download the full transcriptome FASTA:
+
+1. Visit the GENCODE human downloads page:  
+   https://www.gencodegenes.org/human/
+
+2. Navigate to:  
+   **Fasta files → Transcript sequences → ALL**
+
+3. Download the transcript FASTA file for the desired release.
+
+This file contains nucleotide sequences for all annotated transcripts, including those on reference chromosomes, scaffolds, assembly patches, and alternate loci.
+
 Ensure it is present in the working directory before running the pipeline.
 
 #### RNA-seq Preprocessing and Quantification
@@ -125,9 +142,13 @@ bash scripts/salmon_fastp_pipeline.sh
 This step:
 
 Downloads SRA data
+
 Converts reads to FASTQ
+
 Performs trimming and quality control (fastp)
+
 generates QC reports
+
 Performs Salmon pseudoalignment and quantification
 
 Outputs:
@@ -142,7 +163,13 @@ Outputs:
 
 -Gene Identifier and Mapping Generation
 
-#### After quantification, the following files are constructed:
+#### After quantification, the following files are constructed, the mapping and gene_ids files can be generated through any salmon quant.sf file
+
+bash:
+
+cat salmon_SRR5219989/quant.sf |  cut -d "|" -f 2,6 | tr "|" " " | egrep -v "Name" | sort -u | awk '{ split($1, a, "."); print a[1], $2 }' > gtf.mapping.csv
+
+cat salmon_SRR5219989/quant.sf |  cut -d "|" -f 2,6 | tr "|" " " | egrep -v "Name" | sort -u | awk '{ split($1, a, "."); print a[1], $2 }' > ALLgene_ids.csv — version-cleaned gene identifiers
 
 ALLgene_ids.csv — version-cleaned gene identifiers
 
