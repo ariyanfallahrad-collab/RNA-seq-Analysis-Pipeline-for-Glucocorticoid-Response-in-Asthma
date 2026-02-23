@@ -57,6 +57,8 @@ results/         Generated outputs and figures
 
 notebooks/       Jupyter notebooks for exploratory analysis
 
+Workflow_comparison.png/
+
 #### Data Sources
 
 Reference Study:
