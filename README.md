@@ -9,6 +9,14 @@ This project implements an independently designed RNA-seq analysis pipeline to r
 
 The pipeline is modular, reproducible, and designed to operate under constrained computational resources using a controlled Conda environment and stepwise processing.
 
+## Pipeline Workflow
+
+<p align="center">
+  <img src="workflow_comparison.png" width="750">
+</p>
+
+**Figure 1.** Overview of the RNA-seq preprocessing, quantification, and downstream differential expression analysis pipeline.
+
 ### Main Outputs
 
 -Gene-level count matrix
