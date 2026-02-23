@@ -12,7 +12,7 @@ The pipeline is modular, reproducible, and designed to operate under constrained
 ## Pipeline Workflow
 
 <p align="center">
-  <img src="workflow_comparison.png" width="750">
+  <img src="Workflow_comparison.png" width="750">
 </p>
 
 **Figure 1.** Overview of the RNA-seq preprocessing, quantification, and downstream differential expression analysis pipeline.
