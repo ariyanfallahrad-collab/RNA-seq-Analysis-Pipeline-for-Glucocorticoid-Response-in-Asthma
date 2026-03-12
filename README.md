@@ -1,4 +1,16 @@
 # RNA-seq Analysis Pipeline for Glucocorticoid Response in Asthma
+
+## Table of Contents
+- [Project Overview](## Overview)
+- [Dataset](#dataset)
+- [Pipeline Workflow](#pipeline-workflow)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Results](#results)
+- [Limitations](#limitations)
+
+
+
 ## Overview
 
 Asthma is a chronic inflammatory airway disease in which glucocorticoids are widely used as controller medications. However, some patients — particularly those with severe or refractory disease — show limited therapeutic response.
