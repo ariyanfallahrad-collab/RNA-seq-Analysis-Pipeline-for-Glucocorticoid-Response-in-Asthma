@@ -1,13 +1,19 @@
 # RNA-seq Analysis Pipeline for Glucocorticoid Response in Asthma
 
 ## Table of Contents
-- [Project Overview](## Overview)
-- [Dataset](#dataset)
+- [Project Overview](#Overview)
 - [Pipeline Workflow](#pipeline-workflow)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Results](#results)
-- [Limitations](#limitations)
+- [Main Outputs](#Main Outputs)
+- [Quick Start](#Quick Start)
+- [Repository Structure](#Repository Structure)
+- [Data Sources](#Data Sources)
+- [System Requirements](#System Requirements)
+- [RNA-seq Preprocessing and Quantification](#RNA-seq Preprocessing and Quantification)
+- [Downstream Analysis](#Downstream Analysis)
+- [Results](#Results)
+- [Discussion](#Discussion)
+- [Conclusion](#Conclusion)
+
 
 
 
@@ -208,7 +214,7 @@ Extracted from quant.sf outputs (gtf.mapping.csv) to link transcripts to gene sy
 
 Using these resources, transcript abundances are aggregated into a gene-level count matrix (genes × samples).
 
-#### Downstream Analysis:
+#### Downstream Analysis
 
 Run:
 
