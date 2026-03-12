@@ -29,6 +29,9 @@ The pipeline is modular, reproducible, and designed to operate under constrained
 
 ### System Requirements
 
+The pipeline was developed and tested on macOS using a Conda environment.  
+Due to dependency and environment configuration differences, the provided Conda environment may not run correctly on Windows systems and has not been validated on that platform.
+
 macOS (10+) or Linux
 
 8 GB RAM minimum
@@ -39,19 +42,11 @@ Terminal command line
 
 Conda (Anaconda or Miniconda)
 
-Windows Users:
-
-Install Windows Subsystem for Linux (WSL):
-
-https://learn.microsoft.com/windows/wsl/install
-
 Installing Conda:
 
 Install Anaconda or Miniconda for your operating system:
 
 macOS / Linux: https://docs.conda.io/en/latest/miniconda.html
-
-Windows: https://docs.conda.io/en/latest/miniconda.html
 
 After installation, open a terminal (macOS/Linux) or Anaconda Prompt (Windows).
 
