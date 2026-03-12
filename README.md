@@ -2,12 +2,12 @@
 
 ## Table of Contents
 - [Project Overview](#Overview)
+-[System Requirements](#System-Requirements)
 - [Pipeline Workflow](#pipeline-workflow)
 - [Main Outputs](#Main-Outputs)
 - [Quick Start](#Quick-Start)
 - [Repository Structure](#Repository-Structure)
 - [Data Sources](#Data-Sources)
-- [System Requirements](#System-Requirements)
 - [RNA-seq Preprocessing and Quantification](#RNA-seq-Preprocessing-and-Quantification)
 - [Downstream Analysis](#Downstream-Analysis)
 - [Results](#Results)
@@ -26,6 +26,62 @@ The reference study investigated transcriptomic responses to glucocorticoid expo
 This project implements an independently designed RNA-seq analysis pipeline to reproduce a selected subset of those computational findings. Using a limited sample set and a fully custom workflow, raw data were reprocessed and key analytical outputs associated with glucocorticoid-induced transcriptional changes were regenerated.
 
 The pipeline is modular, reproducible, and designed to operate under constrained computational resources using a controlled Conda environment and stepwise processing.
+
+### System Requirements
+
+macOS (10+) or Linux
+
+8 GB RAM minimum
+
+256 GB storage recommended
+
+Terminal command line
+
+Conda (Anaconda or Miniconda)
+
+Windows Users:
+
+Install Windows Subsystem for Linux (WSL):
+
+https://learn.microsoft.com/windows/wsl/install
+
+Installing Conda:
+
+Install Anaconda or Miniconda for your operating system:
+
+macOS / Linux: https://docs.conda.io/en/latest/miniconda.html
+
+Windows: https://docs.conda.io/en/latest/miniconda.html
+
+After installation, open a terminal (macOS/Linux) or Anaconda Prompt (Windows).
+
+### Environment Setup
+
+Place environment.yml in your working directory and run:
+
+conda env create -f environment.yml
+
+conda activate myenv
+
+All pipeline commands must be executed inside the activated environment.
+
+## Reference Transcriptome (GENCODE)
+
+Human transcript nucleotide sequences were obtained from the GENCODE database.
+
+To download the full transcriptome FASTA:
+
+1. Visit the GENCODE human downloads page:  
+   https://www.gencodegenes.org/human/
+
+2. Navigate to:  
+   **Fasta files → Transcript sequences → ALL**
+
+3. Download the transcript FASTA file for the desired release.
+
+This file contains nucleotide sequences for all annotated transcripts, including those on reference chromosomes, scaffolds, assembly patches, and alternate loci.
+
+Ensure it is present in the working directory before runni
 
 ## Pipeline Workflow
 
@@ -97,61 +153,6 @@ SRR5220016
 
 SRR5219984
 
-### System Requirements
-
-macOS (10+) or Linux
-
-8 GB RAM minimum
-
-256 GB storage recommended
-
-Terminal command line
-
-Conda (Anaconda or Miniconda)
-
-Windows Users:
-
-Install Windows Subsystem for Linux (WSL):
-
-https://learn.microsoft.com/windows/wsl/install
-
-Installing Conda:
-
-Install Anaconda or Miniconda for your operating system:
-
-macOS / Linux: https://docs.conda.io/en/latest/miniconda.html
-
-Windows: https://docs.conda.io/en/latest/miniconda.html
-
-After installation, open a terminal (macOS/Linux) or Anaconda Prompt (Windows).
-
-### Environment Setup
-
-Place environment.yml in your working directory and run:
-
-conda env create -f environment.yml
-
-conda activate myenv
-
-All pipeline commands must be executed inside the activated environment.
-
-## Reference Transcriptome (GENCODE)
-
-Human transcript nucleotide sequences were obtained from the GENCODE database.
-
-To download the full transcriptome FASTA:
-
-1. Visit the GENCODE human downloads page:  
-   https://www.gencodegenes.org/human/
-
-2. Navigate to:  
-   **Fasta files → Transcript sequences → ALL**
-
-3. Download the transcript FASTA file for the desired release.
-
-This file contains nucleotide sequences for all annotated transcripts, including those on reference chromosomes, scaffolds, assembly patches, and alternate loci.
-
-Ensure it is present in the working directory before running the pipeline.
 
 #### RNA-seq Preprocessing and Quantification
 
