@@ -27,7 +27,7 @@ This project implements an independently designed RNA-seq analysis pipeline to r
 
 The pipeline is modular, reproducible, and designed to operate under constrained computational resources using a controlled Conda environment and stepwise processing.
 
-### System Requirements
+## System Requirements
 
 The pipeline was developed and tested on macOS using a Conda environment.  
 Due to dependency and environment configuration differences, the provided Conda environment may not run correctly on Windows systems and has not been validated on that platform.
@@ -50,7 +50,7 @@ macOS / Linux: https://docs.conda.io/en/latest/miniconda.html
 
 After installation, open a terminal (macOS/Linux) or Anaconda Prompt (Windows).
 
-### Environment Setup
+## Environment Setup
 
 Place environment.yml in your working directory and run:
 
@@ -60,7 +60,7 @@ conda activate myenv
 
 All pipeline commands must be executed inside the activated environment.
 
-## Reference Transcriptome (GENCODE)
+### Reference Transcriptome (GENCODE)
 
 Human transcript nucleotide sequences were obtained from the GENCODE database.
 
@@ -76,7 +76,7 @@ To download the full transcriptome FASTA:
 
 This file contains nucleotide sequences for all annotated transcripts, including those on reference chromosomes, scaffolds, assembly patches, and alternate loci.
 
-Ensure it is present in the working directory before runni
+Ensure it is present in the working directory before running the pipeline.
 
 ## Pipeline Workflow
 
