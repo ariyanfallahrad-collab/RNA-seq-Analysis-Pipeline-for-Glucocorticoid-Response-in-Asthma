@@ -110,7 +110,7 @@ conda env create -f environment.yml
 
 conda activate myenv
 
-bash scripts/salmon_fastp_pipeline.sh
+bash scripts/fastp_salmon_pipeline.sh
 
 python scripts/analysis.py
 
