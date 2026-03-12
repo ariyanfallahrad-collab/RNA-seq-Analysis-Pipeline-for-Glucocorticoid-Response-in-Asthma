@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [Project Overview](#Overview)
-- [System requirements](#System Requirements)
+- [System requirements](#System-Requirements)
 - [Pipeline Workflow](#pipeline-workflow)
 - [Main Outputs](#Main-Outputs)
 - [Quick Start](#Quick-Start)
